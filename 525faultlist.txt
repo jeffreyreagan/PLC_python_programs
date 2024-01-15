@@ -1,0 +1,184 @@
+F000 No Fault  No fault present. 
+F002 Auxiliary Input 1 External trip (Auxiliary) input. • Check remote wiring.
+• Verify communications programming for intentional fault.
+F003 Power Loss 2 Single phase operation detected with excessive load.
+• Monitor the incoming AC line for low voltage or line power 
+interruption.
+• Check input fuses.
+• Reduce load.
+F004 UnderVoltage 1 DC bus voltage fell below the minimum value. Monitor the incoming AC line for low voltage or line power 
+interruption.
+F005 OverVoltage 1 DC bus voltage exceeded maximum value.
+Monitor the AC line for high line voltage or transient conditions. Bus 
+overvoltage can also be caused by motor regeneration. Extend the 
+decel time or install dynamic brake option.
+F006 Motor Stalled 1 Drive is unable to accelerate or decelerate motor.
+• Increase P041, A442, A444, A446 [Accel Time x] or reduce load so 
+drive output current does not exceed the current set by 
+parameter A484, A485 [Current Limit x] for too long.
+• Check for overhauling load.
+F007 Motor Overload 1 Internal electronic overload trip.
+• An excessive motor load exists. Reduce load so drive output 
+current does not exceed the current set by parameter
+P033 [Motor OL Current].
+• Verify A530 [Boost Select] setting.
+Additional faults are listed on the next page.
+Rockwell Automation Publication 520-DU001D-EN-E - April 2016
+PowerFlex 525 Adjustable Frequency AC Drive 5
+F008 Heatsink OvrTmp 1 Heatsink/Power Module temperature exceeds a predefined value.
+• Check for blocked or dirty heat sink fins. Verify that ambient 
+temperature has not exceeded the rated ambient temperature.
+• Check fan.
+F009 CC OvrTmp 1 Control module temperature exceeds a predefined value.
+• Check product ambient temperature.
+• Check for airflow obstruction.
+• Check for dirt or debris.
+• Check fan.
+F012 HW OverCurrent 2 The drive output current has exceeded the hardware current limit.
+Check programming. Check for excess load, improper A530 [Boost 
+Select] setting, DC brake volts set too high or other causes of excess 
+current.
+F013 Ground Fault 1(2) A current path to earth ground has been detected at one or more of 
+the drive output terminals.
+Check the motor and external wiring to the drive output terminals 
+for a grounded condition.
+F015 Load Loss 2
+The output torque current is below the value programmed in A490 
+[Load Loss Level] for a time period greater than the time 
+programmed in A491 [Load Loss Time].
+• Verify connections between motor and load.
+• Verify level and time requirements
+F021 Output Ph Loss 1 Output Phase Loss (if enabled).
+Configure with A557 [Output Phas Loss En].
+• Verify motor wiring.
+• Verify motor.
+F029 Analog In Loss 1
+An analog input is configured to fault on signal loss. A signal loss has 
+occurred.
+Configure with t094 [Anlg In V Loss] or t097 [Anlg In mA Loss].
+• Check for broken/loose connections at inputs.
+• Check parameters.
+F033 Auto Rstrt Tries 2 Drive unsuccessfully attempted to reset a fault and resume running 
+for the programmed number of A541 [Auto Rstrt Tries]. Correct the cause of the fault and manually clear.
+F038 Phase U to Gnd
+2 A phase to ground fault has been detected between the drive and 
+motor in this phase.
+• Check the wiring between the drive and motor.
+• Check motor for grounded phase.
+• Replace drive if fault cannot be cleared. F039 Phase V to Gnd
+F040 Phase W to Gnd
+F041 Phase UV Short
+2 Excessive current has been detected between these two output 
+terminals.
+Check the motor and drive output terminal wiring for a shorted 
+condition.
+Replace drive if fault cannot be cleared.
+F042 Phase UW Short
+F043 Phase VW Short
+F048 Params Defaulted 1 The drive was commanded to write default values to EEPROM. • Clear the fault or cycle power to the drive.
+• Program the drive parameters as needed.
+F059 Safety Open 1 Both of the safety inputs (Safety 1, Safety 2) are not enabled.
+Configure with t105 [Safety Open En].
+Check safety input signals. If not using safety, verify and tighten 
+jumper for I/O terminals S1, S2 and S+.
+F063 SW OverCurrent 1
+Programmed A486, A488 [Shear Pinx Level] has been exceeded for a 
+time period greater than the time programmed in A487, A489 [Shear 
+Pin x Time].
+• Verify connections between motor and load.
+• Verify level and time requirements.
+F064 Drive Overload 2 Drive overload rating has been exceeded. Reduce load or extend Accel Time.
+F070 Power Unit 2 Failure has been detected in the drive power section.
+• Check maximum ambient temperature has not been exceeded. • Cycle power.
+• Replace drive if fault cannot be cleared.
+F071 DSI Net Loss 2 Control over the Modbus or DSI communications link has been 
+interrupted.
+• Cycle power. • Check communications cabling. • Check Modbus or DSI setting. • Check Modbus or DSI status.
+F072 Opt Net Loss 2 Control over the network option card’s remote network has been 
+interrupted.
+• Cycle power.
+• Check communications cabling.
+• Check network adapter setting.
+• Check external network status.
+F073 EN Net Loss 2 Control through the embedded EtherNet/IP adapter has been 
+interrupted.
+• Cycle power.
+• Check communications cabling.
+• Check EtherNet/IP setting.
+• Check external network status.
+F080 Autotune Failure 2 The autotune function was either cancelled by the user or failed. Restart procedure.
+Additional faults are listed on the next page.
+Rockwell Automation Publication 520-DU001D-EN-E - April 2016
+6 PowerFlex 525 Adjustable Frequency AC Drive
+F081 DSI Comm Loss 2 Communications between the drive and the Modbus or DSI master 
+device have been interrupted.
+• Cycle power.
+• Check communications cabling.
+• Check Modbus or DSI setting.
+• Check Modbus or DSI status.
+• Modify using C125 [Comm Loss Action].
+• Connecting I/O terminals C1 and C2 to ground may improve 
+noise immunity.
+• Replace wiring, Modbus master device, or control module.
+F082 Opt Comm Loss 2 Communications between the drive and the network option card 
+have been interrupted.
+• Cycle power.
+• Reinstall option card in drive.
+• Modify using C125 [Comm Loss Action].
+• Replace wiring, port expander, option card, or control module.
+F083 EN Comm Loss 2 Internal communications between the drive and the embedded 
+EtherNet/IP adapter have been interrupted.
+• Cycle power.
+• Check EtherNet/IP setting.
+• Check drives Ethernet settings and diagnostic parameters.
+• Modify using C125 [Comm Loss Action].
+• Replace wiring, Ethernet switch, or control module.
+F091 Encoder Loss 2 Requires differential encoder.
+One of the 2 encoder channel signals is missing.
+• Check Wiring.
+• If P047, P049, P051 [Speed Referencex] = 16 “Positioning” and 
+A535 [Motor Fdbk Type] = 5 “Quad Check”, swap the Encoder 
+channel inputs or swap any two motor leads.
+• Replace encoder.
+F094 Function Loss 2 “Freeze-Fire” (Function Loss) input is inactive, input to the 
+programmed terminal is open. Close input to the terminal and cycle power.
+F100 Parameter 
+Chksum 2 Drive parameter non-volatile storage is corrupted. Set P053 [Reset To Defalts] to 2 “Factory Rset”.
+F101 External Storage 2 External non-volatile storage has failed. Set P053 [Reset To Defalts] to 2 “Factory Rset”.
+F105 C Connect Err 2 Control module was disconnected while drive was powered. Clear fault and verify all parameter settings. Do not remove or 
+install the control module while power is applied.
+F106 Incompat C-P 2 The PowerFlex 525 control module does not support power modules 
+with 0.25 HP power rating.
+• Change to a different power module.
+• Change to a PowerFlex 523 control module.
+F107 Replaced C-P 2 The control module could not recognize the power module. Hardware 
+failure.
+• Change to a different power module.
+• Replace control module if changing power module does not 
+work.
+F109 Mismatch C-P 2 The control module was mounted to a different drive type power 
+module. Set P053 [Reset To Defalts] to 3 “Power Reset”.
+F110 Keypad 
+Membrane 2 Keypad membrane failure / disconnected. • Cycle power. • Replace control module if fault cannot be cleared.
+F111 Safety Hardware 2 Safety input enable hardware malfunction. One of the safety inputs is 
+not enabled.
+• Check safety input signals. If not using safety, verify and tighten 
+jumper for I/O terminals S1, S2 and S+. • Replace control module if fault cannot be cleared.
+F114 uC Failure 2 Microprocessor failure. • Cycle power.
+• Replace control module if fault cannot be cleared.
+F122 I/O Board Fail 2 Failure has been detected in the drive control and I/O section. • Cycle power.
+• Replace drive or control module if fault cannot be cleared.
+F125 Flash Update Req 2 The firmware in the drive is corrupt, mismatched, or incompatible 
+with the hardware.
+Perform a firmware flash update operation to attempt to load a 
+valid set of firmware.
+F126 NonRecoverablErr 2 A non-recoverable firmware or hardware error was detected. The 
+drive was automatically stopped and reset.
+• Clear fault or cycle power to the drive.
+• Replace drive or control module if fault cannot be cleared.
+F127 DSIFlashUpdatReq 2
+A critical problem with the firmware was detected and the drive is 
+running using backup firmware that only supports DSI 
+communications.
+Perform a firmware flash update operation using DSI 
+communications to attempt to load a valid set of firmware
