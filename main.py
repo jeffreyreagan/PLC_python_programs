@@ -2,26 +2,22 @@ import subprocess
 import os
 import time
 import sys
-from acceptedlist import acceptedlist,rejectedlist,quitlist,pwdlist
+from acceptedlist import acceptedlist,rejectedlist,quitlist,pwdlist,usernames
 
 title = 'Main'
 # set username variable value here:
-username_1 = ['Jeffrey','Jeff','jeff','Jeffrey'] 
-username_2 = ['Elly','elly']
-username_3 = 'guest'
-username_4 = ''
-
+username_2='guest'
 #login function
 
 def mylogin():
     myName = ''
     count = 0
-    while myName not in username_1 or myName not in username_2 and count != 5:
+    while myName not in usernames or myName not in username_2 and count != 5:
         count_remaining = 5 - count
         print('What is your name? You have ' + str(count_remaining) + ' attempts left')
         count += 1
         myName = input()
-        if myName in username_1 or myName in username_2:
+        if myName in usernames or myName in username_2:
                 count = 5
                 print('Success, ' + myName)
                 pwdinput=input('\nwhat is your password?\n')
@@ -29,7 +25,7 @@ def mylogin():
                     applications()
         # to convert count remaining into printable format
         str(count_remaining)
-        if myName not in username_1 or myName not in username_2:
+        if myName not in usernames or myName not in username_2:
             print('Incorrect name! You have ', count_remaining, ' attempts remaining')
             print (myName)
 
