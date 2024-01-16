@@ -1,5 +1,4 @@
 from acceptedlist import listlist
-
 import time
 import pylogix
 
@@ -12,9 +11,9 @@ def search_plc_ips():
     global possible_connection_request
     possible_connection_request=input('List for all or search by machine name ex:Cupper1\n')
     if possible_connection_request in Machines_ip:
+        global formattedip
         formattedip = Machines_ip.pop(possible_connection_request)
         print(formattedip)
-        connection(formattedip)
         return possible_connection_request
         #select_plc_connection()
         
@@ -31,16 +30,18 @@ def search_plc_ips():
     #    time.sleep(1)
      #   print("am i making it here")
 def connection():
-    formatted_ip, slot = connection.split('/')
-    plc= pylogix.PLC()
-    plc.IpAddress = formatted_ip
-    plc.ProcessorSlot = int(slot)
-    plc.Open()
-    print("am i making it here")
-    if plc.comm == True:
-        print('connected')
-    else:
-        print('did not connect')
+    print(formattedip)
+    formatted_ip, backplane, slot = formattedip.split('/')
+    #plc= pylogix.PLC()
+    print("Here's the formatted ip",formatted_ip,"Heres the slot #", slot)
+    #plc.IpAddress = formatted_ip
+    #plc.ProcessorSlot = int(slot)
+    #plc.Open()
+    #print("am i making it here")
+    #if plc.comm == True:
+      #  print('connected')
+    #else:
+     #   print('did not connect')
 while True:
     search_plc_ips()
     connection()
